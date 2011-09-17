@@ -1,0 +1,12 @@
+#!/bin/bash
+# Script to create a tunnel to remote squid via ssh
+MESSAGE="Remember to set http proxy to 127.0.0.1:8080"
+USER=""
+HOST=""
+PORT=""
+CONFIG="~/.ssh/alternateconfig"
+
+# Send message to user
+echo $MESSAGE
+# Connect to squid
+ssh -F $CONFIG -C2qTnN -L 8080:localhost:8080 $USER@$HOST -p $PORT

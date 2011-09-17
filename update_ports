@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Update port tree
+sudo port selfupdate
+
+# Update old ports
+sudo port -nuf upgrade outdated

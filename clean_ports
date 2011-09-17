@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Clean some unnecesary compilation files
+sudo port clean --all installed
+
+# Remove all inactive ports
+sudo port -f uninstall inactive
