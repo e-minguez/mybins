@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Update the ports collection
+portsnap fetch update
+
+# Update the ports database
+portsdb -Fu
+
+# Show the outdated ports
+portversion -vl'<' > /tmp/updateports
+
+if [ -s /tmp/updateports ]
+then
+	cat /tmp/updateports | mail -s "Update_ports log" root
+fi
+
+rm -f /tmp/updateports
+
+echo "To update ports, use:"
+echo "# portupgrade -nac"
+echo "And then:"
+echo "# portupgrade -ac"
