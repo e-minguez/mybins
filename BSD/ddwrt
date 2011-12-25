@@ -1,0 +1,3 @@
+#!/bin/bash
+PID=`ps auxww | grep ddwrt | grep root | awk '{print $2}'`
+kill $PID
