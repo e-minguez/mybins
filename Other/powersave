@@ -1,0 +1,28 @@
+#!/bin/sh
+# powertop recomendations generated with "powertop --html"
+
+# VM writeback timeout
+echo '1500' > '/proc/sys/vm/dirty_writeback_centisecs'
+
+# Enable SATA link power Managmenet for hostX
+for i in 0 1 2 3 4 5
+do
+	echo "min_power" > /sys/class/scsi_host/host${i}/link_power_management_policy
+done
+
+# Enable Audio codec power management
+echo "1" > /sys/module/snd_hda_intel/parameters/power_save
+
+# NMI watchdog should be turned off
+echo "0" > /proc/sys/kernel/nmi_watchdog
+
+# Wake-on-lan status for device em1
+ethtool -s em1 wol d
+
+# Runtime PM for PCI Device
+for j in $(lspci|cut -f1 -d' ')
+do
+	echo "auto" > /sys/bus/pci/devices/0000:${j}/power/control
+done
+
+exit 0
