@@ -8,4 +8,4 @@ PORT=""
 # Send message to user
 echo $MESSAGE
 # Connect to squid
-ssh -C2qTnN -L 8080:localhost:8080 $USER@$HOST -p $PORT
+ssh -vC2qTnN -L 8080:localhost:8080 $USER@$HOST -p $PORT
