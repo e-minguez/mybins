@@ -5,7 +5,7 @@ import base64
 import optparse
 
 #username = "admin"
-#password = "pwdMB2QEHJkRW9aM"
+#password = "xxx"
 
 parser = optparse.OptionParser(description="LDAP Configuration for Satellite")
 # Required Arguments
